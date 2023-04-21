@@ -8,66 +8,102 @@
     structs
 
 */
-
-typedef struct policyGeneral
+struct addres
 {
-    /* data */
+    char street [20];
+    char suburb [20];
+    char city [20];
+    char state [20];
+    char country [3];
+    char streetNumber [5];
+    char innerNumber[5]; 
+};
+struct person
+{
+    char name[15];
+    char lastname[15];
+    struct date birth;
+    struct addres addres;
+    int age;
+    char contactPhone[10];
+    char contactMail[20];
+};
+struct date
+{
+    int day;
+    char month[3];
+    int year[];
 };
 
-
-typedef struct policyOwner
+struct policyGeneral
 {
-    char name [15];
-    char lastname [15];
-    char contactPhone [10];
+    float deductible;
+    float coverage;
+    float price;
+    float sumAssured;
+    struct date vigency;
+};
+
+struct policyOwner
+{
+    char name[15];
+    char lastname[15];
+    char contactPhone[10];
+    char contactMail[20];
+    struct addres addres;   
+    int age;
+};
+
+struct policyCar
+{
+    char model[10];
+    char brand[10];
+    int serialNumber;
+    int year;
     
 };
 
-typedef struct policyCar
+struct policyBuissnes
 {
-    /* data */
+    struct addres addresInsured;
+    
+};
+struct policyHome
+{
+    struct addres addresInsured;
 };
 
-typedef struct policyBuissnes
+struct policyLife
 {
-    /* data */
+    struct person beneficiary;
+    struct person insured;
 };
 
-typedef struct policyHome
+union policyType
 {
-    /* data */
+    struct policyBuissnes Buissnes;
+    struct policyHome Home;
+    struct policyCar Car;
+    struct policyLife Home;
 };
 
-typedef struct policyLife
+struct policy
 {
-    /* data */  
+    union policyType type;
+    struct policyGeneral genaralData;
+    struct policyOwner policyOwner;
 };
-
-typedef union policyType
-{
-   struct policyBuissnes Buissnes;
-	struct policyHome Home;
-	struct policyCar Car;
-	struct policyLife Home;
-};
-
-typedef struct policy
-{
-    /* data */
-};
-
 
 /*
     polices functions
 */
-void addPolicy(struct poliza *p, int *id)
+void addPolicy(struct policy p[], int *id)
 {
-    p[*id].coverage = 4;
-    p[*id].vigency[0] = 'd';
-    p[*id].price = 2332;
-    p[*id].sumAssured = 33;
-    p[*id].t.c.anio = 123;
-    *id++;
+    p[*id].genaralData.coverage;
+    p[*id].genaralData.vigency;
+    p[*id].genaralData.price = 2332;
+    p[*id].genaralData.sumAssured = 33;
+    (*id)++;
 }
 void removePolicy()
 {
@@ -83,7 +119,6 @@ void showPolicy()
 */
 void selectPolicyType()
 {
-    
 }
 void mainMenu(struct poliza *po, int *it)
 {
@@ -96,7 +131,7 @@ void mainMenu(struct poliza *po, int *it)
         switch (opcion)
         {
         case 1:
-            selectPolicyType(po, &it);
+            addPolicy(po, &it);
         case 2: // eliminar
         case 3: // Buscar
         case 4: // editar
@@ -110,9 +145,9 @@ void mainMenu(struct poliza *po, int *it)
 }
 int main()
 {
-    struct policy p [10];
-    int size = 10;
+    struct policy ls[10];
+    int s = 10;
     int i = 0;
-    mainMenu(p, &i);
+    mainMenu(ls, &i);
     // p.t.c.anio=2021;
 }
