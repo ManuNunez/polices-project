@@ -1,15 +1,14 @@
 // standar libs
 
-
 #include <stdio.h>;
 
+// my own libs
+#include "policesFunctions.h"
+#include "policesStruct.h"
 
-//my own libs
+void selectPoliceTypeMenu();
+void mainMenu();
 
-#include "polices.h"
-
-
-int main ()
+int main()
 {
-
 }

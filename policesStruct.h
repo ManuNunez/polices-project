@@ -1,9 +1,9 @@
-#ifndef POLICES_H
-#define POLICES_H
+#ifndef POLICESFUNCTIONS_H
+#define POLICESSTRUCT_H
 
 typedef struct policyOwner
 {
-    /* data */
+    
 };
 
 typedef struct policyCar
