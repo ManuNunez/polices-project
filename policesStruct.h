@@ -1,6 +1,13 @@
 #ifndef POLICESFUNCTIONS_H
 #define POLICESSTRUCT_H
 
+struct date
+{
+    int day;
+    char month[3];
+    int year[];
+};
+
 struct addres
 {
     char street[20];
@@ -20,12 +27,6 @@ struct person
     int age;
     char contactPhone[10];
     char contactMail[20];
-};
-struct date
-{
-    int day;
-    char month[3];
-    int year[];
 };
 
 struct policyGeneral
@@ -79,8 +80,10 @@ union policyType
 
 struct policy
 {
+    int id;
     union policyType type;
     struct policyGeneral genaralData;
     struct policyOwner policyOwner;
 };
+
 #endif // POLICES_H

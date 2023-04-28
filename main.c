@@ -1,6 +1,6 @@
 // standar libs
 
-#include <stdio.h>;
+#include <stdio.h>
 
 // my own libs
 
@@ -8,125 +8,39 @@
     structs
 
 */
-struct addres
-{
-    char street[20];
-    char suburb[20];
-    char city[20];
-    char state[20];
-    char country[3];
-    char streetNumber[5];
-    char innerNumber[5];
-};
-struct person
-{
-    char name[15];
-    char lastname[15];
-    struct date birth;
-    struct addres addres;
-    int age;
-    char contactPhone[10];
-    char contactMail[20];
-};
-struct date
-{
-    int day;
-    char month[3];
-    int year[];
-};
-
-struct policyGeneral
-{
-    float deductible;
-    char coverage[15];
-    float price;
-    float sumAssured;
-    struct date vigency;
-};
-
-struct policyOwner
-{
-    char name[15];
-    char lastname[15];
-    char contactPhone[10];
-    char contactMail[20];
-    struct addres addres;
-};
-
-struct policyCar
-{
-    char model[10];
-    char brand[10];
-    int serialNumber;
-    int year;
-};
-
-struct policyBuissnes
-{
-    struct addres addresInsured;
-};
-struct policyHome
-{
-    struct addres addresInsured;
-};
-
-struct policyLife
-{
-    struct person beneficiary;
-    struct person insured;
-};
-
-union policyType
-{
-    struct policyBuissnes Buissnes;
-    struct policyHome Home;
-    struct policyCar Car;
-    struct policyLife Life;
-};
-
-struct policy
-{
-    union policyType type;
-    struct policyGeneral genaralData;
-    struct policyOwner policyOwner;
-};
-
+#include "policesStruct.h"
 /*
     polices functions
 */
 void addPolicy(struct policy p[], int *id, int policyType)
 {
     /*
-        float deductible;
-    float coverage;
-    float price;
-    float sumAssured;
-    struct date vigency;
+
     */
     printf("---AGREGAR POLIZA---");
     printf("introduce el nombre del dueño de la poliza");
-    scanf("%c", &p[*id].policyOwner.name);
+    scanf("%s", p[*id].policyOwner.name);
     printf("introduce el apellido del dueño de la poliza");
-    scanf("%c", &p[*id].policyOwner.lastname);
+    scanf("%s", p[*id].policyOwner.lastname);
     printf("introduce el numero de telefono del dueño de la poliza");
-    scanf("%c", &p[*id].policyOwner.contactPhone);
+    scanf("%s", p[*id].policyOwner.contactPhone);
     printf("introduce el correo electronico del dueño de la poliza");
-    scanf("%c", &p[*id].policyOwner.contactMail);
+    scanf("%s", p[*id].policyOwner.contactMail);
     printf("introduce la dirección del dueño");
     printf("pais");
-    scanf("%c", &p[*id].policyOwner.addres.country);
+    scanf("%s", p[*id].policyOwner.addres.country);
     printf("estado");
-    scanf("%c", &p[*id].policyOwner.addres.state);
+    scanf("%s", p[*id].policyOwner.addres.state);
     printf("ciudad");
-    scanf("%c", &p[*id].policyOwner.addres.city);
+    scanf("%s", p[*id].policyOwner.addres.city);
     printf("colonia");
-    scanf("%c", &p[*id].policyOwner.addres.suburb);
+    scanf("%s", p[*id].policyOwner.addres.suburb);
     printf("calle");
-    scanf("%c", &p[*id].policyOwner.addres.street);
+    scanf("%s", p[*id].policyOwner.addres.street);
     printf("numero exterior");
-    scanf("%c", &p[*id].policyOwner.addres.streetNumber);
+    scanf("%s", p[*id].policyOwner.addres.streetNumber);
     printf("numero interior");
-    scanf("%c", &p[*id].policyOwner.addres.innerNumber);
+    scanf("%s", p[*id].policyOwner.addres.innerNumber);
     printf("introduce el precio de la poliza");
     scanf("%f", &p[*id].genaralData.price);
     printf("introduce el deducible de la poliza");
@@ -134,23 +48,61 @@ void addPolicy(struct policy p[], int *id, int policyType)
     printf("introduce la suma asegurada de la poliza");
     scanf("%f", &p[*id].genaralData.sumAssured);
     printf("introduce el tipo de covertura de la poliza");
-    scanf("%c", &p[*id].genaralData.coverage);
+    scanf("%s", p[*id].genaralData.coverage);
     printf("introduce la fecha de vigencia de la poliza");
     printf("año");
-    scanf("%c", &p[*id].genaralData.vigency.year);
-     printf("mes");
-    scanf("%c", &p[*id].genaralData.vigency.month);
-     printf("dia");
-    scanf("%c", &p[*id].genaralData.vigency.day);
+    scanf("%s", p[*id].genaralData.vigency.year);
+    printf("mes");
+    scanf("%s", p[*id].genaralData.vigency.month);
+    printf("dia");
+    scanf("%s", p[*id].genaralData.vigency.day);
 
     switch (policyType)
     {
-        
     case 1:
+        printf("introduzca la dirección asegurada\n");
+        printf("pais\n");
+        scanf("%s", p[*id].policyOwner.addres.country);
+        printf("estado\n");
+        scanf("%s", p[*id].policyOwner.addres.state);
+        printf("ciudad\n");
+        scanf("%s", p[*id].policyOwner.addres.city);
+        printf("colonia\n");
+        scanf("%s", p[*id].policyOwner.addres.suburb);
+        printf("calle\n");
+        scanf("%s", p[*id].policyOwner.addres.street);
+        printf("numero exterior\n");
+        scanf("%s", p[*id].policyOwner.addres.streetNumber);
+        printf("numero interior\n");
+        scanf("%s", p[*id].policyOwner.addres.innerNumber);
 
         break;
+    case 2:
+        printf("introduzca la dirección asegurada");
+        printf("pais\n");
+        scanf("%s", p[*id].policyOwner.addres.country);
+        printf("estado\n");
+        scanf("%s", p[*id].policyOwner.addres.state);
+        printf("ciudad\n");
+        scanf("%s", p[*id].policyOwner.addres.city);
+        printf("colonia\n");
+        scanf("%s", p[*id].policyOwner.addres.suburb);
+        printf("calle\n");
+        scanf("%s", p[*id].policyOwner.addres.street);
+        printf("numero exterior\n");
+        scanf("%s", p[*id].policyOwner.addres.streetNumber);
+        printf("numero interior\n");
+        scanf("%s", p[*id].policyOwner.addres.innerNumber);
+        break;
+    case 3:
+    /*
+    
+    */
+        printf("introduzca la marca del carro asegurado\n");
+        printf("introduzca el modelo del carro asegurado\n");
+        break;
 
-    default:
+    case 4: // life
         break;
     }
 
@@ -158,9 +110,11 @@ void addPolicy(struct policy p[], int *id, int policyType)
 }
 void removePolicy()
 {
+
 }
-void orderPolices()
+void findPolices(struct policy p[], int *id, int toFind)
 {
+
 }
 void showPolicy()
 {
@@ -180,7 +134,7 @@ int selectPolicyType()
         printf("2- Hogar \n");
         printf("3- Auto \n");
         printf("4- Vida \n");
-        print("5- SALIR \n");
+        printf("5- SALIR \n");
         scanf("%d", &optionSelected);
         if (optionSelected >= 0 && optionSelected <= 5)
         {
@@ -211,7 +165,9 @@ void mainMenu(struct poliza *po, int *it)
                 addPolicy(po, &it, policyType);
             }
         case 2: // eliminar
-        case 3: // Buscar
+        case 3: 
+            int folio;
+            printf("Introduzca el folio a ");
         case 4: // editar
         case 5: // Mostrar todo
         case 6: // ordenar
